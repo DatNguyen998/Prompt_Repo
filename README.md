@@ -2,8 +2,8 @@
 Here is the place to share about the prompt and how to frame the mindset to work with AI.
 
 Classic / Pop
-image image
 
+`
 # presentation_design_spec_sculpture_pop_flexible_jp.yaml
 # Style: Sculpture Pop Art / Vaporwave / Neon Surrealism
 # Concept: "A Free Remix of Classical Art and Modern Pop Objects"
@@ -67,5 +67,6 @@ Layout Variations (Catalog):
 Design Rules:
   - "Variation: Do not reuse the same statue across slides; alternate between male, female, and animal sculptures to keep visual novelty."
   - "Color Contrast: Ensure strong contrast between background and item colors (e.g., purple background × yellow accessories)."
+`
   - "Isolation: Cleanly cut out statues and objects from their backgrounds, keeping edges sharp and precise."
 
