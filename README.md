@@ -1,9 +1,44 @@
 # Prompt_Repo
 Here is the place to share about the prompt and how to frame the mindset to work with AI.
+# 🏛️ Sculpture Pop Art Spec: Visual Framework v1.0
 
-Classic / Pop
+> **Strategy Pivot:** Why settle for static aesthetics? We are transitioning from traditional layouts to a high-saturation, post-modern "Remix" culture.
 
-`
+---
+
+### 🎨 Visual Identity & Layout Showcase
+| High-Impact Visuals | Concept Messaging |
+| :--- | :--- |
+| <img src="path/to/drink_vibes.jpg" width="400" alt="Drink Vibes"> | <img src="path/to/selfie_king.jpg" width="400" alt="Selfie King"> |
+| **Drink Vibes (Cover)**: Extreme close-up of classical bust with neon sunglasses. | **Selfie King**: Interactive UI elements layered over marble textures. |
+
+| Information-Focused | Access & CTA |
+| :--- | :--- |
+| <img src="path/to/donut_chart.jpg" width="400" alt="Donut Chart"> | <img src="path/to/qr_contact.jpg" width="400" alt="QR Contact"> |
+| **Data Visualization**: Real-world object integration (Donut Chart). | **Contact**: Surrealist QR integration for seamless conversion. |
+
+---
+
+### 🛠️ Technical Specification (YAML)
+Use the block below as the "Source of Truth" for generative AI or design automation tools.
+
+```yaml
+# presentation_design_spec_sculpture_pop_flexible_jp.yaml
+# Style: Sculpture Pop Art / Vaporwave / Neon Surrealism
+# Concept: "A Free Remix of Classical Art and Modern Pop Objects"
+
+Global Design Settings:
+  Theme: "Classical marble sculpture × modern neon pop (flexible style)"
+  Tone: "Bold, humorous, high-saturation, fashionable, surreal"
+  Visual Identity:
+    Background Colors: ["Cyan", "Magenta", "Yellow", "Lime", "Purple"]
+    Collage Materials:
+      Sculptures: "Classical white marble statues (Male/Female/Philosophers)"
+      Gadgets: "Sunglasses, headphones, smartphones, VR, donuts"
+  Typography:
+    Headings: "Helvetica Now Display Black (Ultra-bold)"
+    Contrast: "Maximum readability threshold (White/Black/Accent)"
+
 # presentation_design_spec_sculpture_pop_flexible_jp.yaml
 # Style: Sculpture Pop Art / Vaporwave / Neon Surrealism
 # Concept: "A Free Remix of Classical Art and Modern Pop Objects"
@@ -67,6 +102,6 @@ Layout Variations (Catalog):
 Design Rules:
   - "Variation: Do not reuse the same statue across slides; alternate between male, female, and animal sculptures to keep visual novelty."
   - "Color Contrast: Ensure strong contrast between background and item colors (e.g., purple background × yellow accessories)."
-`
   - "Isolation: Cleanly cut out statues and objects from their backgrounds, keeping edges sharp and precise."
+
 
