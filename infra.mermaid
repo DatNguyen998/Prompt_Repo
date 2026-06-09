@@ -1,0 +1,82 @@
+           flowchart LR
+    %% Định nghĩa các Style
+    classDef client fill:#d4edda,stroke:#28a745,stroke-width:2px;
+    classDef gateway fill:#ffeeba,stroke:#ffc107,stroke-width:2px;
+    classDef processing fill:#cce5ff,stroke:#007bff,stroke-width:2px;
+    classDef storage fill:#f8d7da,stroke:#dc3545,stroke-width:2px;
+    classDef analytics fill:#e2e3e5,stroke:#6c757d,stroke-width:2px;
+    classDef security fill:#fff3cd,stroke:#856404,stroke-width:2px,stroke-dasharray: 5 5;
+
+    %% Lớp Nguồn Dữ liệu (Data Sources)
+    subgraph Sources [1. Data Sources]
+        App[Mobile App \n iOS/Android]:::client
+        Wearables[CGM & Wearables]:::client
+        AppleHealth[Apple Health / Google Fit]:::client
+    end
+
+    %% Lớp Cổng giao tiếp & Thu thập (Ingestion)
+    subgraph Ingestion [2. Ingestion & API Layer]
+        API_GW{API Gateway \n Load Balancer}:::gateway
+        Auth[Identity Provider \n OAuth2/OIDC]:::gateway
+        PubSub[[Message Broker \n Kafka/PubSub]]:::gateway
+        FHIR_API[Cloud Healthcare API \n FHIR Interface]:::gateway
+    end
+
+    %% Lớp Xử lý Dữ liệu (Processing)
+    subgraph Processing [3. Data Processing Layer]
+        Stream_Proc(Stream Processing \n Real-time Rules):::processing
+        Batch_Proc(Batch Processing \n ETL Jobs):::processing
+        Anonymizer((Data Anonymization \n & Masking)):::processing
+    end
+
+    %% Lớp Lưu trữ (Storage)
+    subgraph Storage [4. Secure Storage Layer]
+        Ops_DB[(Operational DB \n PostgreSQL)]:::storage
+        FHIR_Store[(FHIR Data Store \n Clinical Data)]:::storage
+        Data_Lake[(Data Warehouse \n BigQuery/Snowflake)]:::storage
+    end
+
+    %% Lớp Phân tích & Ứng dụng (Serving & Analytics)
+    subgraph Serving [5. Serving & Analytics]
+        ML_Engine{{ML Engine \n Predictive Care}}:::analytics
+        Notification[Push Notification \n Alert Service]:::analytics
+        Dashboard[Clinical Dashboard \n Looker/Tableau]:::analytics
+    end
+
+    %% Luồng Dữ liệu (Data Flow)
+    App -->|HTTPS/REST| API_GW
+    Wearables -->|Bluetooth/API| App
+    AppleHealth -->|SDK| App
+    
+    API_GW <-->|Verify Token| Auth
+    API_GW -->|Clinical Data| FHIR_API
+    API_GW -->|Telemetry/Events| PubSub
+    
+    FHIR_API --> FHIR_Store
+    
+    PubSub -->|Real-time Data| Stream_Proc
+    PubSub -->|Raw Data| Batch_Proc
+    
+    Stream_Proc -->|Fast Query Data| Ops_DB
+    Stream_Proc -->|Trigger Alerts| Notification
+    Stream_Proc -->|Remove PII| Anonymizer
+    
+    Batch_Proc -->|Clean & Format| Anonymizer
+    Anonymizer -->|De-identified Data| Data_Lake
+    
+    Ops_DB <-->|Read/Write| API_GW
+    
+    Data_Lake -->|Train Models| ML_Engine
+    Data_Lake -->|Analytics| Dashboard
+    
+    ML_Engine -->|Risk Predictions| Ops_DB
+    ML_Engine -->|Proactive Alerts| Notification
+    Notification -->|FCM/APNs| App
+
+    %% Compliance Boundary
+    subgraph Compliance [HIPAA / Nghị định 13 Compliance Boundary]
+        Ingestion
+        Processing
+        Storage
+    end
+    class Compliance security;                                                                      
